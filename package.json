@@ -1,0 +1,21 @@
+{
+  "name": "red",
+  "version": "1.0.0",
+  "description": "simple Red Metropolitana de Transporte scrapper",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "prod": "node app.js"
+  },
+  "author": "César Meneses",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "puppeteer": "^19.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

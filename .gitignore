@@ -1,0 +1,42 @@
+# Archivos generados por Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+*.log
+
+# Archivos generados por Puppeteer
+*.jpg
+*.png
+*.pdf
+
+# Archivos de configuración
+.env
+
+# Archivos de desarrollo
+*.env
+*.env.local
+*.env.development
+*.env.test
+*.env.staging
+*.env.production
+*.log
+*.pid
+*.lock
+*.swp
+*.out
+
+# Archivos de construcción
+build/
+dist/
+
+# Otros
+.git/
+.svn/
+.idea/
+.vscode/
+/deploy/
+/config/
+/secrets/
+/logs/
+/tmp/
+/coverage/
