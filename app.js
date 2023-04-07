@@ -8,8 +8,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-const busStopRoutes = require('./src/routes/busStop');
-app.use('/busStop', busStopRoutes);
+const routes = require('./src/routes');
+
+app.use('/', routes);
 
 const PORT = process.env.PORT || 3000;
 
