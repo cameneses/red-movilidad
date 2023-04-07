@@ -14,4 +14,19 @@ router.get('/:code', async (req, res) => {
   }
 });
 
+router.get('/:code/:busCode', async (req, res) => {
+  try {
+    const code = req.params.code;
+    const busCode = req.params.busCode;
+
+    const busStopResults = await getBusStopInfo(code);
+    const results = busStopResults.filter(({ bus }) => bus === busCode);
+
+    res.status(200).json(results);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'There was an error' });
+  }
+});
+
 module.exports = router;

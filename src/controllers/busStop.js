@@ -38,8 +38,6 @@ async function getBusStopInfo(code) {
     }
   );
 
-  console.log(results);
-
   await browser.close();
 
   return results;
