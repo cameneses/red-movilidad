@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer');
 
+const { cleanArriveTime } = require('./utils');
+
 async function getBusStopInfo(code) {
   const browser = await puppeteer.launch();
 
@@ -22,9 +24,16 @@ async function getBusStopInfo(code) {
           );
           const [bus, direction, status, arrival] = columns;
 
-          const index = arrival?.indexOf(' ');
-          const distance = arrival?.slice(0, index).trim();
-          const time = arrival?.slice(index + 1, arrival.length).trim();
+          let distance;
+          let time;
+          if (arrival === 'Fuera de servicio.') {
+            distance = '';
+            time = arrival;
+          } else {
+            const index = arrival?.indexOf(' ');
+            distance = arrival?.slice(0, index).trim();
+            time = arrival?.slice(index + 1, arrival.length).trim();
+          }
 
           return {
             bus,
@@ -40,7 +49,7 @@ async function getBusStopInfo(code) {
 
   await browser.close();
 
-  return results;
+  return results.map((bus) => ({ ...bus, time: cleanArriveTime(bus.time) }));
 }
 
 module.exports = { getBusStopInfo };
